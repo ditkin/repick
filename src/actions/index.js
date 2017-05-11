@@ -15,7 +15,7 @@ const parseList = (list) => {
 };
 
 export const fetchLists = dispatch => {
-    const fetch_url = `http://localhost:3000/ui/v3_access/accounts/1/lists`;
+    const fetch_url = 'http://localhost:3000/ui/v3_access/accounts/1/lists';
     return dispatch((dispatch) => {
         fetch(fetch_url)
             .then((response) => {

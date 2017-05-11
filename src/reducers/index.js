@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import * as Helpers from 'helpers/lists'
+import * as Helpers from '../helpers/lists'
 
 const listsReducer = (state = { lists: [] }, action) => {
 
