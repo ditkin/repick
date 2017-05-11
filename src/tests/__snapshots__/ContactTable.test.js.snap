@@ -1,0 +1,90 @@
+exports[`test renders list of contacts 1`] = `
+<table
+  className="Table Table--cellBorders table table-hover">
+  <thead
+    className="Table-head">
+    <tr>
+      <th
+        className="u-tableCellCollapse">
+        <input
+          className="Form-checkbox"
+          id="checkbox1"
+          type="checkbox" />
+        <label
+          className="u-paddingFlush u-block"
+          htmlFor="checkbox1" />
+      </th>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th>
+        Email Address
+      </th>
+      <th>
+        Source
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input
+          className="Form-checkbox"
+          data-qe-id="Table-CHECKBOX-ID"
+          id="c0a921c6-fcdd-7c65-ad54-aada7138f123"
+          type="checkbox" />
+        <label
+          className="u-paddingFlush u-block"
+          htmlFor="c0a921c6-fcdd-7c65-ad54-aada7138f123" />
+      </td>
+      <td
+        className="first_name">
+        Ana
+      </td>
+      <td
+        className="last_name">
+        Rocha
+      </td>
+      <td
+        className="email_address">
+        table_1_there@nullmailer.com
+      </td>
+      <td
+        className="create_source">
+        Added by you
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input
+          className="Form-checkbox"
+          data-qe-id="Table-CHECKBOX-ID"
+          id="e605a263-54cc-4dbf-2432-5622ca2d946a"
+          type="checkbox" />
+        <label
+          className="u-paddingFlush u-block"
+          htmlFor="e605a263-54cc-4dbf-2432-5622ca2d946a" />
+      </td>
+      <td
+        className="first_name">
+        Judith
+      </td>
+      <td
+        className="last_name">
+        Reeves
+      </td>
+      <td
+        className="email_address">
+        from_2_these@nullmailer.com
+      </td>
+      <td
+        className="create_source">
+        Added by you
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
