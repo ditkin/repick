@@ -6,9 +6,7 @@ import App from './components/App';
 
 import './fed.css';
 
-let store = createStore(listsReducer);
-
 render(
-  <App store={store}/>,
+  <App store={createStore(listsReducer)}/>,
   document.getElementById('root')
 )

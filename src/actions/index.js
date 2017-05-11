@@ -1,4 +1,14 @@
-const receiveLists = (lists) =>  {
+export const REQUEST_LISTS = 'REQUEST_LISTS';
+
+export const requestLists = () => {
+    return {
+        type: 'REQUEST_LISTS',
+    };
+}
+
+export const RECEIVE_LISTS = 'RECEIVE_LISTS';
+
+function receiveLists(lists) {
   return {
     type: 'RECEIVE_LISTS',
     lists,
