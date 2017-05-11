@@ -1,15 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom'
 import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import rootReducer from './reducers'
+import listsReducer from './reducers'
 import App from './components/App';
+
 import './fed.css';
 
-const store = createStore(rootReducer);
+let store = createStore(listsReducer);
 
-render((
-    <Provider store={store}>
-        <App/>
-    </Provider>
-), document.getElementById('root'));
+render(
+  <App store={store}/>,
+  document.getElementById('root')
+)
