@@ -1,19 +1,28 @@
-export const RECEIVE_CONTACTS = 'RECEIVE_CONTACTS';
+const RECEIVE_LISTS = 'RECEIVE_LISTS';
 
-const receiveContacts = (json) =>  {
-    return { type: RECEIVE_CONTACTS, contacts: json.contacts, count: json.contacts_count }
+const receiveLists = (lists) =>  {
+    return { type: RECEIVE_LISTS, lists };
 };
 
-export const fetchContacts = accountId => dispatch => {
-    let fetch_url = `http://localhost:3000/contacts-service/v3/accounts/${accountId}/contacts?limit=15&include_count=true`;
-    return dispatch(function (dispatch) {
-            fetch(fetch_url)
-                .then((response) => {
-                    return response.json()
-                })
-                .then((json) => {
-                    dispatch(receiveContacts(json));
-                });
-        }
-    )
+const parseList = (list) => {
+    return {
+        favorite: list.favorite,
+        list_id: list.list_id,
+        membership_count: Math.floor(Math.random() * 100),
+        name: list.name,
+        sequence_id: list.sequence_id,
+    };
+};
+
+export const fetchLists = dispatch => {
+    const fetch_url = `http://localhost:3000/ui/v3_access/accounts/1/lists`;
+    return dispatch((dispatch) => {
+        fetch(fetch_url)
+            .then((response) => {
+                return response.json().lists.map(parseList)
+            })
+            .then((lists) => {
+                dispatch(receiveLists(lists));
+            });
+    });
 };
