@@ -5,11 +5,13 @@ export const DESELECT_LIST = 'DESELECT_LIST';
 
 export const requestLists = () => ({
     type: 'REQUEST_LISTS',
+    isFetching: true,
 })
 
 export const receiveLists = (lists) => ({
     type: 'RECEIVE_LISTS',
     lists,
+    isFetching: false,
 })
 
 const parseList = (list) => ({

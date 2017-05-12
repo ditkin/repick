@@ -41,3 +41,9 @@ export const deselectAllLists = (lists) => {
     return changeList(list, false);
   });
 }
+
+const compare = (a, b) => ( (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1 )
+
+export const sortLists = (lists) => {
+  return lists.sort(compare)
+}

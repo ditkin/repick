@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import * as Actions from '../actions'
 import ListBox from '../components/ListBox'
 import SearchBox from '../components/SearchBox'
+import * as Helpers from '../helpers/lists'
 
 class App extends Component {
   static PropTypes = {
     lists: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
   }
 
@@ -28,14 +30,16 @@ class App extends Component {
   }
 
   render() {
-    const { lists } = this.props;
+    const { isFetching, lists } = this.props;
     const { store } = this.context;
+    const sortedLists = Helpers.sortLists(lists)
     return (
       <div className="app">
         <SearchBox handleSearch={this.handleSearch}/>
         <ListBox
           handleClickList={this.handleClickList}
-          lists={lists}
+          isFetching={isFetching}
+          lists={sortedLists}
           store={store}
         />
       </div>
@@ -44,10 +48,11 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { lists } = state;
+  const { lists, isFetching } = state;
 
   return {
     lists,
+    isFetching,
   };
 };
 
