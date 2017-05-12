@@ -29,18 +29,28 @@ class App extends Component {
     this.props.dispatch(Actions.searchLists(search_val));
   }
 
+  handleClickSelectAll = () => {
+    if (Helpers.allListsSelected(this.props.lists)) {
+      this.props.dispatch(Actions.deselectAllLists());
+    } else {
+      this.props.dispatch(Actions.selectAllLists());
+    } 
+  }
+
   render() {
     const { isFetching, lists } = this.props;
-    const { store } = this.context;
     const sortedLists = Helpers.sortLists(lists)
+    const allListsSelected = Helpers.allListsSelected(lists)
+    console.log('Lists Sel: ' + allListsSelected)
     return (
       <div className="app">
         <SearchBox handleSearch={this.handleSearch}/>
         <ListBox
+          allListsSelected={allListsSelected}
           handleClickList={this.handleClickList}
+          handleClickSelectAll={this.handleClickSelectAll}
           isFetching={isFetching}
           lists={sortedLists}
-          store={store}
         />
       </div>
     );

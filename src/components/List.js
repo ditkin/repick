@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import * as Actions from '../actions'
 
 const List = ({ favorite, sequence_id, name, onClick, selected, searched }) => {
   const visibilityClass = searched || selected ? '' : 'u-hide';

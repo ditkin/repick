@@ -25,7 +25,7 @@ const listsReducer = (state = { lists: [], isFetching: true }, action) => {
     
     case 'REQUEST_LISTS':
       console.log('hit REQUEST_LISTS');
-      return { lists: action.lists, isFetching: true };
+      return { lists: [], isFetching: true };
 
     case 'RECEIVE_LISTS':
       console.log('hit RECEIVE_LISTS');

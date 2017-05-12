@@ -47,3 +47,7 @@ const compare = (a, b) => ( (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 :
 export const sortLists = (lists) => {
   return lists.sort(compare)
 }
+
+export const allListsSelected = (lists) => (
+  lists.reduce((acc, list) => ( acc && list.selected ), true)
+)
