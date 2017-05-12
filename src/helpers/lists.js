@@ -1,6 +1,6 @@
 const changeMatchedList = (list, id, selected) => {
   return Object.assign(list, {
-    selected: list.list_id === id ? selected : list.selected
+    selected: list.sequence_id === id ? selected : list.selected
   });
 };
 

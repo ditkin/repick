@@ -1,12 +1,22 @@
 import React, { PropTypes } from 'react';
 import * as Actions from '../actions'
 
-const List = ({ name, key, list_id, selected, store, handleClick }) => {
-  const { dispatch } = store;
+const List = ({
+  favorite,
+  onClick,
+  key,
+  name,
+  selected,
+}) => {
   return (
-  <div onClick={() => handleClick(list_id)}>
-        <input type="checkbox" class="Form-checkbox"/>
-        <span> Name: {name} | Selected: {String(selected)}</span> </div>
+    <div onClick={onClick}>
+      <input type="checkbox" class="Form-checkbox" checked={selected}/>
+      <span>
+        Name: {name} |
+        Selected: {String(selected)} |
+        Favorite: {String(favorite)}
+      </span>
+    </div>
   )
 }
 

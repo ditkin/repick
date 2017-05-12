@@ -13,15 +13,19 @@ class App extends Component {
     this.props.dispatch(Actions.fetchLists());
   }
 
-  handleClick = list_id => {
-    this.props.dispatch(Actions.selectList(list_id))
+  handleClickList = (seq_id, selected) => {
+    if (selected) {
+      this.props.dispatch(Actions.deselectList(seq_id))
+    } else {
+      this.props.dispatch(Actions.selectList(seq_id))
+    }
   }
 
   render() {
     const { lists } = this.props;
     const { store } = this.context;
     return (
-      <ListBox lists={lists} store={store} handleClick={this.handleClick}/>
+      <ListBox lists={lists} store={store} handleClickList={this.handleClickList}/>
     )
   }
 }
@@ -47,6 +51,7 @@ const mapStateToProps = (state) => {
 //     },
 //   }
 //};
+
 App.contextTypes = {
   store: PropTypes.object
 }
