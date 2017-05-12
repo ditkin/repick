@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
-import List from '../components/List';
+import React, { PropTypes } from 'react';
+import List from './List'
 
-class ListBox extends Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
 
-  render() {
-    const lists = this.props.lists.map((list) => {
-      return <List key={ list.sequence_id }/>
-    });
+const ListBox = ({ lists, store, handleClick }) => (
+  <div>
+    {lists.map((list) => 
+      <List name={ list.name }
+      key={ list.sequence_id }
+      list_id={ list.list_id }
+      selected={ list.selected }
+      store={ store }
+      handleClick={ handleClick } />
+    )}
+  </div>
+)
 
-    console.log('rendering listbox');
-
-    console.log(lists);
-
-    return (
-      <div>
-        <h1> ListBox Component </h1>
-        <div>
-          { lists }
-        </div>
-      </div>
-    );
-  }
+ListBox.propTypes = {
+  lists: PropTypes.array.isRequired
 }
 
-export default ListBox;
+export default ListBox

@@ -1,19 +1,16 @@
 export const REQUEST_LISTS = 'REQUEST_LISTS';
-
-export const requestLists = () => {
-    return {
-        type: 'REQUEST_LISTS',
-    };
-}
-
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
+export const SELECT_LIST = 'SELECT_LIST';
+export const DESELECT_LIST = 'DESELECT_LIST';
 
-function receiveLists(lists) {
-  return {
+export const requestLists = () => ({
+    type: 'REQUEST_LISTS',
+})
+
+export const receiveLists = (lists) => ({
     type: 'RECEIVE_LISTS',
     lists,
-  };
-};
+})
 
 const parseList = (list) => {
   return {
@@ -51,12 +48,11 @@ export const deselectAllLists = () => {
   }
 };
 
-export const fetchLists = dispatch => {
+export const fetchLists = () => dispatch => {
+  dispatch(requestLists())
   const fetch_url = 'http://localhost:3000/ui/v3_access/accounts/1/lists';
-  fetch(fetch_url).then((response) => {
-    return response.json().then((json) => {
-      dispatch(receiveLists(json.lists.map(parseList)));
-    });
-  });
-};
+  return fetch(fetch_url)
+    .then(response => response.json())
+    .then(json => dispatch(receiveLists(json.lists.map(parseList))))
+}
 
