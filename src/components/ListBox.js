@@ -4,8 +4,8 @@ import List from './List'
 
 const ListBox = ({ lists, store, handleClickList, isFetching }) => (
   <div id="list-box">
-    <div id="spinner">
-      <div className={`LoadingIndicator ${isFetching ? '' : 'u-hide'}`}>
+    <div id="spinner" className={`${isFetching ? '' : 'u-hide'}`}>
+      <div className={"LoadingIndicator"}>
         <object data="https://static.ctctcdn.com/ui/images1/loading-indicator.svg" type="image/svg+xml"></object>
         <p className="LoadingIndicator-message">Loading...</p>
       </div>
