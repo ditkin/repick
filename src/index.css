@@ -1,6 +1,8 @@
 .app {
   width: 500px;
   margin: 20px auto;
+  border: 1px solid #b0b6bb;
+  border-radius: 3px;
 }
 
 #list-box {
@@ -10,4 +12,13 @@
 
 .star-orange {
   color: orange;
+}
+
+#search-box {
+  border: none;
+  border-bottom: 1px solid #b0b6bb;
+}
+
+.list {
+  margin: 20px 25px;
 }

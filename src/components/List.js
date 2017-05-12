@@ -6,7 +6,7 @@ const List = ({ favorite, sequence_id, name, onClick, selected, searched }) => {
   const favoriteClass = favorite ? '' : 'u-hide';
 
   return (
-    <div onClick={onClick} className={visibilityClass}>
+    <div onClick={onClick} className={`list ${visibilityClass}`}>
       <input type="checkbox" className="Form-checkbox" checked={selected}/>
       <label className="u-marginRight">
         {name}
