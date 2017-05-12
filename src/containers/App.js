@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import * as Actions from '../actions'
 import ListBox from '../components/ListBox'
+import SearchBox from '../components/SearchBox'
 
 class App extends Component {
   static PropTypes = {
@@ -15,42 +16,40 @@ class App extends Component {
 
   handleClickList = (seq_id, selected) => {
     if (selected) {
-      this.props.dispatch(Actions.deselectList(seq_id))
+      this.props.dispatch(Actions.deselectList(seq_id));
     } else {
-      this.props.dispatch(Actions.selectList(seq_id))
+      this.props.dispatch(Actions.selectList(seq_id));
     }
+  }
+
+  handleSearch = (e) => {
+    const search_val = e.target.value;
+    this.props.dispatch(Actions.searchLists(search_val));
   }
 
   render() {
     const { lists } = this.props;
     const { store } = this.context;
     return (
-      <ListBox lists={lists} store={store} handleClickList={this.handleClickList}/>
-    )
+      <div className="app">
+        <SearchBox handleSearch={this.handleSearch}/>
+        <ListBox
+          handleClickList={this.handleClickList}
+          lists={lists}
+          store={store}
+        />
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { lists } = state
+  const { lists } = state;
 
   return {
     lists,
   };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     selectList: (list_id) => {
-//       dispatch(Actions.selectList(list_id))
-//     },
-//     deselectList: (list_id) => {
-//       dispatch(Actions.deselectList(list_id))
-//     },
-//     fetchLists: () => {
-//       dispatch(Actions.fetchLists());
-//     },
-//   }
-//};
 
 App.contextTypes = {
   store: PropTypes.object

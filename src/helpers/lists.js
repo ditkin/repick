@@ -8,6 +8,16 @@ const changeList = (list, selected) => {
   return Object.assign(list, { selected });
 };
 
+const filterSearchedList = (list, value) => {
+  return Object.assign(list, { searched: list.name.includes(value) });
+}
+
+export const searchLists = (lists, value) => {
+  return lists.map((list) => {
+    return filterSearchedList(list, value);
+  });
+}
+
 export const selectList = (lists, id) => {
   return lists.map(list => {
     return changeMatchedList(list, id, true);

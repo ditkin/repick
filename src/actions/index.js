@@ -19,6 +19,12 @@ const parseList = (list) => ({
     name: list.name,
     selected: false,
     sequence_id: list.sequence_id,
+    searched: true,
+})
+
+export const searchLists = (value) => ({
+  type: 'SEARCH_LISTS',
+  value,
 })
 
 export const selectList = (list_id) => ({

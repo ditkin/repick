@@ -1,21 +1,17 @@
 import React, { PropTypes } from 'react';
 import * as Actions from '../actions'
 
-const List = ({
-  favorite,
-  onClick,
-  key,
-  name,
-  selected,
-}) => {
+const List = ({ favorite, sequence_id, name, onClick, selected, searched }) => {
+  const visibilityClass = searched || selected ? '' : 'u-hide';
+  const favoriteClass = favorite ? '' : 'u-hide';
+
   return (
-    <div onClick={onClick}>
-      <input type="checkbox" class="Form-checkbox" checked={selected}/>
-      <span>
-        Name: {name} |
-        Selected: {String(selected)} |
-        Favorite: {String(favorite)}
-      </span>
+    <div onClick={onClick} className={visibilityClass}>
+      <input type="checkbox" className="Form-checkbox" checked={selected}/>
+      <label className="u-marginRight">
+        {name}
+      </label>
+      <i className={`Icon--star star-orange ${favoriteClass}`}/>
     </div>
   )
 }

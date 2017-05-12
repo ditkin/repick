@@ -1,0 +1,13 @@
+.app {
+  width: 500px;
+  margin: 20px auto;
+}
+
+#list-box {
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.star-orange {
+  color: orange;
+}

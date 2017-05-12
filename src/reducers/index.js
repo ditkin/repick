@@ -3,8 +3,12 @@ import * as Helpers from '../helpers/lists'
 
 const listsReducer = (state = { lists: [] }, action) => {
   switch (action.type) {
+    case 'SEARCH_LISTS':
+      console.log('hit SEARCH_LISTS');
+      return { lists: Helpers.searchLists(state.lists, action.value) }
+
     case 'SELECT_LIST':
-      console.log('hit RECEIVE_LISTS');
+      console.log('hit SELECT_LIST');
       return { lists: Helpers.selectList(state.lists, action.list_id) }
 
     case 'DESELECT_LIST':

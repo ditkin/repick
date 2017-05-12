@@ -6,6 +6,7 @@ import listsReducer from './reducers'
 import App from './containers/App'
 import thunk from 'redux-thunk'
 import './fed.css'
+import './index.css';
 
 const middleware = [ thunk ]
 const store = createStore(
