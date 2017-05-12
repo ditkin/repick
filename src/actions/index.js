@@ -1,3 +1,5 @@
+import * as Helpers from '../helpers/lists';
+
 export const REQUEST_LISTS = 'REQUEST_LISTS';
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const SELECT_LIST = 'SELECT_LIST';
@@ -15,7 +17,7 @@ export const receiveLists = (lists) => ({
 const parseList = (list) => ({
     favorite: list.favorite,
     list_id: list.list_id,
-    membership_count: Math.floor(Math.random() * 100),
+    membership_count: list.membership_count,
     name: list.name,
     selected: false,
     sequence_id: list.sequence_id,
@@ -47,9 +49,11 @@ export const deselectAllLists = () => ({
 
 export const fetchLists = () => dispatch => {
   dispatch(requestLists())
-  const fetch_url = 'http://localhost:3000/ui/v3_access/accounts/1/lists';
+  const fetch_url = 'http://localhost:3000/ui/v3_access/accounts/1/lists?include_count=true';
   return fetch(fetch_url)
     .then(response => response.json())
-    .then(json => dispatch(receiveLists(json.lists.map(parseList))))
+    .then(json => dispatch(receiveLists(
+      Helpers.filterEmptyLists(json.lists).map(parseList)
+    )))
 }
 

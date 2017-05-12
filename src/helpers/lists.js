@@ -51,3 +51,7 @@ export const sortLists = (lists) => {
 export const allListsSelected = (lists) => (
   lists.reduce((acc, list) => ( acc && list.selected ), true)
 )
+
+export const filterEmptyLists =(lists) => (
+  lists.filter((list) => list.membership_count > 0)
+)

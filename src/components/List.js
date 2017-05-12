@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const List = ({ favorite, sequence_id, name, onClick, selected, searched }) => {
+const List = ({ favorite, sequence_id, name, onClick, selected, searched, membership_count }) => {
   const visibilityClass = searched || selected ? '' : 'u-hide';
   const favoriteClass = favorite ? '' : 'u-hide';
 
@@ -8,7 +8,7 @@ const List = ({ favorite, sequence_id, name, onClick, selected, searched }) => {
     <div onClick={onClick} className={`list ${visibilityClass}`}>
       <input type="checkbox" className="Form-checkbox" checked={selected}/>
       <label className="u-marginRight">
-        {name}
+        {name} ({membership_count})
       </label>
       <i className={`Icon--star star-orange ${favoriteClass}`}/>
     </div>

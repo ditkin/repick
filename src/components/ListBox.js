@@ -6,7 +6,6 @@ import SelectAll from './SelectAll'
 const ListBox = ({ allListsSelected, lists, handleClickList, handleClickSelectAll, isFetching, selectAllVisible }) => {
   const formVisibilityClass = isFetching ? 'u-hide' : ''
   const spinnerVisibilityClass = isFetching ? '' : 'u-hide'
-  debugger;
   return (
     <div id="list-box">
       <div id="spinner" className={`${spinnerVisibilityClass}`}>
@@ -25,6 +24,7 @@ const ListBox = ({ allListsSelected, lists, handleClickList, handleClickSelectAl
             <List
               favorite={list.favorite}
               key={list.sequence_id}
+              membership_count={list.membership_count}
               name={list.name}
               onClick={() => handleClickList(list.sequence_id, list.selected)}
               searched={list.searched}
