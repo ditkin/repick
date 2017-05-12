@@ -1,12 +1,12 @@
 .app {
   width: 500px;
   margin: 20px auto;
-  border: 1px solid #b0b6bb;
+  border: 1px solid #B0B6BB;
   border-radius: 3px;
 }
 
 #list-box {
-  height: 350px;
+  height: 237px;
   overflow-y: scroll;
 }
 
@@ -16,7 +16,7 @@
 
 #search-box {
   border: none;
-  border-bottom: 1px solid #b0b6bb;
+  border-bottom: 1px solid #B0B6BB;
 }
 
 .list {
@@ -25,4 +25,11 @@
 
 #spinner {
   margin: 100px 0 0 225px;
+}
+
+.footer {
+  background-color: #EFF7FB;
+  border-top: 1px soliD #D7DADD;
+  height: 56px;
+  padding: 3px;
 }

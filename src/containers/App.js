@@ -1,9 +1,10 @@
+import * as Actions from '../actions';
+import * as Helpers from '../helpers/lists';
+import Footer from '../components/Footer';
+import ListBox from '../components/ListBox';
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux'
-import * as Actions from '../actions'
-import ListBox from '../components/ListBox'
-import SearchBox from '../components/SearchBox'
-import * as Helpers from '../helpers/lists'
+import SearchBox from '../components/SearchBox';
+import { connect } from 'react-redux';
 
 class App extends Component {
   static PropTypes = {
@@ -34,13 +35,16 @@ class App extends Component {
       this.props.dispatch(Actions.deselectAllLists());
     } else {
       this.props.dispatch(Actions.selectAllLists());
-    } 
+    }
   }
 
   render() {
     const { isFetching, lists } = this.props;
-    const sortedLists = Helpers.sortLists(lists)
-    const allListsSelected = Helpers.allListsSelected(lists)
+    const sortedLists = Helpers.sortLists(lists);
+    const allListsSelected = Helpers.allListsSelected(lists);
+    const selectedListCount = Helpers.getSelectedListCount(lists);
+    const selectedRecipientCount = Helpers.getSelectedRecipientCount(lists);
+
     console.log('Lists Sel: ' + allListsSelected)
     return (
       <div className="app">
@@ -51,6 +55,10 @@ class App extends Component {
           handleClickSelectAll={this.handleClickSelectAll}
           isFetching={isFetching}
           lists={sortedLists}
+        />
+        <Footer
+          lists={selectedListCount}
+          recipients={selectedRecipientCount}
         />
       </div>
     );

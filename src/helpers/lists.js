@@ -67,6 +67,20 @@ export const allListsSelected = (lists) => (
   lists.reduce((acc, list) => ( acc && list.selected ), true)
 )
 
-export const filterEmptyLists =(lists) => (
+export const filterEmptyLists = (lists) => (
   lists.filter((list) => list.membership_count > 0)
+)
+
+export const getSelectedListCount = (lists) => (
+  lists.reduce((acc, list) => {
+    const count = list.selected ? 1 : 0;
+    return acc + count;
+  }, 0)
+)
+
+export const getSelectedRecipientCount = (lists) => (
+  lists.reduce((acc, list) => {
+    const count = list.selected ? list.membership_count : 0;
+    return acc + count;
+  }, 0)
 )
