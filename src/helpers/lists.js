@@ -42,7 +42,22 @@ export const deselectAllLists = (lists) => {
   });
 }
 
-const compare = (a, b) => ( (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1 )
+const compare = (a, b) => {
+  const a_name = a.name.toLowerCase();
+  const b_name = b.name.toLowerCase();
+  const a_fav = a.favorite;
+  const b_fav = b.favorite;
+
+  if (a_fav && !b_fav) {
+    return -1;
+  } else if (b_fav &! a_fav) {
+    return 1;
+  } else if (a_name < b_name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
 
 export const sortLists = (lists) => {
   return lists.sort(compare)
